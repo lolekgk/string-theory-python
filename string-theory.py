@@ -10,19 +10,34 @@ def is_palindrome(text):
     filtered_text = list(filter(str.isalpha, text.lower()))
     return True if filtered_text == filtered_text[::-1] else False
     """
-
     #first method
     filtered_text = [letter.lower() for letter in text if letter.isalpha()]
     return True if filtered_text == filtered_text[::-1] else False
 
-print(is_palindrome('Mr. Owl ate my metal worm'))
 
 def is_isogram(text):
     """
     >>> is_isogram('uncopyrightables')
     True
     """
-    pass
+
+    #method 1
+    filtered_text = list(filter(str.isalpha, text.lower()))
+    for letter in filtered_text:
+        if filtered_text.count(letter) > 1:
+            return False
+    return True
+
+    #method 2
+    """
+    duplicate = []
+    filtered_text = [letter.lower() for letter in text if letter.isalpha()]
+    for letter in filtered_text:
+        if letter in duplicate:
+            return False
+        duplicate.append(letter)
+    return True
+    """
 
 
 def is_pangram(text):
