@@ -5,10 +5,17 @@ def is_palindrome(text):
     >>> is_palindrome('Eva, can I see bees in a cave?')
     True
     """
+    #second method
+    """
+    filtered_text = list(filter(str.isalpha, text.lower()))
+    return True if filtered_text == filtered_text[::-1] else False
+    """
 
-    filtered_text = "".join([letter.lower() for letter in text if letter.isalpha()])
+    #first method
+    filtered_text = [letter.lower() for letter in text if letter.isalpha()]
     return True if filtered_text == filtered_text[::-1] else False
 
+print(is_palindrome('Mr. Owl ate my metal worm'))
 
 def is_isogram(text):
     """
