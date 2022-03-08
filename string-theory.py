@@ -1,3 +1,5 @@
+import string
+
 def is_palindrome(text):
     """
     >>> is_palindrome('Mr. Owl ate my metal worm')
@@ -45,7 +47,22 @@ def is_pangram(text):
     >>> is_pangram('The quick brown fox jumps over the lazy dog')
     True
     """
-    pass
+    #method 1
+    filtered_text = [letter.lower() for letter in text if letter.isalpha()]
+    for letter in list(map(chr, range(97, 123))):
+        if letter not in filtered_text:
+            return False
+    return True
+
+    #method 2
+    """
+    filtered_text = [letter.lower() for letter in text if letter.isalpha()]
+    alphabet = string.ascii_lowercase
+    for letter in alphabet:
+        if letter not in filtered_text:
+            return False
+    return True
+    """
 
 
 def is_anagram(text1, text2):
