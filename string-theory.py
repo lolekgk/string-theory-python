@@ -15,13 +15,19 @@ def is_palindrome(text):
     """
     #first method
     filtered_text = [letter.lower() for letter in text if letter.isalpha()]
-    return True if filtered_text == filtered_text[::-1] else False
-
+    return filtered_text == filtered_text[::-1] 
+    # return True if filtered_text == filtered_text[::-1] else False
+    
 
 def is_isogram(text):
     """
     >>> is_isogram('uncopyrightables')
     True
+    """
+    #method 3
+    """
+    filtered_text = [letter.lower() for letter in text if letter.isalpha()]
+    return len(filtered_text) == len(set(filtered_text))
     """
 
     #method 1
@@ -76,7 +82,7 @@ def is_anagram(text1, text2):
     filtered_text2 = [letter.lower() for letter in text2 if letter.isalpha()]
     filtered_text1.sort()
     filtered_text2.sort()
-    return True if filtered_text1 == filtered_text2 else False
+    return filtered_text1 == filtered_text2
 
     #method 2
     """
@@ -84,10 +90,21 @@ def is_anagram(text1, text2):
     filtered_text2 = [letter.lower() for letter in text2 if letter.isalpha()]
     return True if Counter(filtered_text1) == Counter(filtered_text2) else False
     """
+     
 
 def is_blanagram(text1, text2):
     """
     >>> is_blanagram('Justin Timberlake', "I'm a berk but listen")
     True
     """
-    pass
+    filtered_text1 = list(filter(str.isalpha, text1.lower()))
+    filtered_text2 = [letter.lower() for letter in text2 if letter.isalpha()]
+    letters_count1 = Counter(filtered_text1)
+    letters_count2 = Counter(filtered_text2)
+    if sum((letters_count1 - letters_count2).values()) == 1 and\
+    sum((letters_count2 - letters_count1).values()) == 1: 
+        return True
+    return False
+       
+    
+    
