@@ -70,8 +70,15 @@ def is_anagram(text1, text2):
     >>> is_anagram('Justin Timberlake', "I'm a jerk but listen")
     True
     """
-    pass
 
+    filtered_text1 = list(filter(str.isalpha, text1.lower()))
+    filtered_text2 = [letter.lower() for letter in text2 if letter.isalpha()]
+    filtered_text1.sort()
+    filtered_text2.sort()
+    return True if filtered_text1 == filtered_text2 else False
+       
+            
+print(is_anagram('Justin Timberlake', "I'm a jerk but listen"))
 
 def is_blanagram(text1, text2):
     """
